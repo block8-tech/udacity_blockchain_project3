@@ -1,6 +1,7 @@
 const SHA256 = require('crypto-js/sha256');
 const BlockClass = require('./Block.js');
 const {Blockchain} = require('./BlockChain');
+const {Block} = require('./Block');
 
 /**
  * Controller Definition to encapsulate routes to work with blocks
@@ -76,9 +77,46 @@ class BlockController {
     /**
      * Implement a POST Endpoint to add a new Block, url: "/api/block"
      */
-    postNewBlock() {
-        this.app.post("/api/block", (req, res) => {
-            // Add your code here
+    async postNewBlock() {
+        //1. Create the endpoint
+        //2. Store the request.body
+        //3. Check that there is a body value being passed to the new block.
+            // do not accept an empty string '' for newBlock.body
+        //4. Add the newBlock to the levelDB database
+        //5. Error handle
+
+
+        //1.
+        this.app.post("/block", (req, res) => {
+
+            //2.
+            const newBlockBody = req.body.body;
+
+            //3.
+            if(newBlockBody === '' || !newBlockBody){
+                const errorMessage = {
+                    error: 'new block not created!',
+                    message: 'You must pass a valid string as the body of the newBlock. You can NOT leave as an empty string.'
+                };
+                res.send(errorMessage);
+                res.end();
+            } else {
+                //4.
+                this.db.addBlock(new Block(newBlockBody))
+                    .then(persistedBlock => {
+                        res.send(persistedBlock);
+                        res.end();
+                    })
+                    .catch(err => {
+                        //5.
+                        const errorMessage = {
+                            error: 'new block not created!',
+                            message: err
+                        };
+                        res.send(errorMessage);
+                        res.end();
+                    });
+            }
         });
     }
 
