@@ -1,5 +1,6 @@
 const SHA256 = require('crypto-js/sha256');
 const BlockClass = require('./Block.js');
+const {Blockchain} = require('./BlockChain');
 
 /**
  * Controller Definition to encapsulate routes to work with blocks
@@ -13,17 +14,47 @@ class BlockController {
     constructor(app) {
         this.app = app;
         this.blocks = [];
+        this.db = new Blockchain();
         this.initializeMockData();
         this.getBlockByIndex();
         this.postNewBlock();
     }
 
+
+
     /**
-     * Implement a GET Endpoint to retrieve a block by index, url: "/api/block/:index"
+     * GET Endpoint to retrieve a block by index (height)"
      */
-    getBlockByIndex() {
-        this.app.get("/api/block/:index", (req, res) => {
-            // Add your code here
+    async getBlockByIndex() {
+        //1. Check blockchain height
+        //2. Use height in a conditional block
+        //3. if within height then retrieve block
+        //4. if not, return error message.
+
+        //1.
+        const chainHeight = await this.db.getBlockHeight();
+
+        this.app.get("/block/:index", async (req, res) => {
+
+            //2. Get the index value from the req.params.index
+            const indx = req.params.index;
+
+            //3.
+            if(indx > chainHeight){
+                // The HTTP request was for a block that does not exist. ERROR
+                const errorMessage = {
+                    error: `Block does not exist.`,
+                    message: `The blockchain length = ${chainHeight} at the time of your request. You requested block number ${indx} which exceeds the chain length at the time of your request.`
+                };
+                res.send(JSON.stringify(errorMessage));
+                res.end();
+
+            } else if(indx <= chainHeight) {
+                const block = await this.db.getBlock(indx).catch(console.log);
+                res.send(block);
+                res.end();
+            }
+
         });
     }
 
