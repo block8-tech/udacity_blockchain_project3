@@ -17,9 +17,8 @@ I have built the API on top of the popular NodeJS minimal framework [ExpressJS](
 The request endpoint follows the structure: `localhost:8000/block/[block-index]`
 <br/>
 
-*Example `GET` request that will return the block at index 0 using curl:  `curl localhost:8000/block/0`
+* Example `GET` request that will return the block at index 0 using curl:  `curl localhost:8000/block/0`
 
-<br/>
 
 #### POST request to insert a new Block to the database
 
