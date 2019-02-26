@@ -23,6 +23,9 @@ Example `GET` request that will return the block at index 0 using curl:  `curl l
 
 * Make a `POST` request with a single key value pair (the key must be named "body")
 <br/>
+
 Example `POST` request using curl: `curl -d "body=mock%20data" -X POST http://localhost:8000/block`
 
+<br/>
 
+Enjoy!
