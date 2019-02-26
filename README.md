@@ -25,4 +25,8 @@ The request endpoint follows the structure: `localhost:8000/block/[block-index]`
 
 <br/>
 
+#### Errors 
+
+* If you send a `POST` request without the correct body data (key = body), then you will receive an error message and your new block will NOT be created.
+
 Enjoy!
