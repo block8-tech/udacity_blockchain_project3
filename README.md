@@ -17,12 +17,12 @@ I have built the API on top of the popular NodeJS minimal framework [ExpressJS](
 The request endpoint follows the structure: `localhost:8000/block/[block-index]`
 <br/>
 Example `GET` request that will return the block at index 0 using [Curl](https://curl.haxx.se/) `curl localhost:8000/block/0`
-<br />
+<br/>
 
 #### POST request to insert a new Block to the database
 
 * Make a `POST` request with a single key value pair (the key must be named "body")
-<br />
+<br/>
 Example `POST` request using [Curl](https://curl.haxx.se/): `curl -d "body=mock%20data" -X POST http://localhost:8000/block`
 
 
