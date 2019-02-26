@@ -16,7 +16,7 @@ I have built the API on top of the popular NodeJS minimal framework [ExpressJS](
 * Make a `GET` request from a web browser or via a utility of your choice such as [Curl](https://curl.haxx.se/) or [PostMan](https://www.getpostman.com/).
 The request endpoint follows the structure: `localhost:8000/block/[block-index]`
 <br/>
-Example `GET` request that will return the block at index 0: [localhost:8000/block/0](localhost:8000/block/0)
+Example `GET` request that will return the block at index 0: localhost:8000/block/0
 <br />
 
 #### POST request to insert a new Block to the database
@@ -25,4 +25,4 @@ Example `GET` request that will return the block at index 0: [localhost:8000/blo
 <br />
 Example `POST` request using [Curl](https://curl.haxx.se/): `curl -d "body=mock%20data" -X POST http://localhost:8000/block`
 
-Block8-tech
+
