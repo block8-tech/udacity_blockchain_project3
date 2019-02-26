@@ -8,7 +8,7 @@ I have built the API on top of the popular NodeJS minimal framework [ExpressJS](
 
 #### Install the code
 1. Download OR clone this GitHub repository
-2. Open a terminal or command-prompt and cd to the directory this repository was saved and type: `npm install`
+2. Open a terminal or command-prompt and navigate to the directory this repository was saved and type: `npm install`
 3. From terminal or command-prompt (remaining in the same directory as above) type: `node app.js`
 
 
