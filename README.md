@@ -15,7 +15,6 @@ I have built the API on top of the popular NodeJS minimal framework [ExpressJS](
 #### Get a block from the database
 * Make a `GET` request from a web browser or via a utility of your choice such as [Curl](https://curl.haxx.se/) or [PostMan](https://www.getpostman.com/).
 The request endpoint follows the structure: `localhost:8000/block/[block-index]`
-<br/>
 
 * Example `GET` request that will return the block at index 0 using curl:  `curl localhost:8000/block/0`
 
