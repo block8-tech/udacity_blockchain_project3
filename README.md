@@ -18,7 +18,7 @@ The request endpoint follows the structure: `localhost:8000/block/[block-index]`
 * Example `GET` request that will return the block at index 0 using curl:  `curl localhost:8000/block/0`
 
 
-#### POST request to insert a new Block to the database
+#### Insert a new Block to the database
 
 * Make a `POST` request with a single key value pair (the key must be named "body")
 * Example `POST` request using curl: `curl -d "body=mock%20data" -X POST http://localhost:8000/block`
