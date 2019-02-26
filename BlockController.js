@@ -17,8 +17,31 @@ class BlockController {
         this.blocks = [];
         this.db = new Blockchain();
         this.initializeMockData();
+        this.getHome();
         this.getBlockByIndex();
         this.postNewBlock();
+    }
+
+    getHome() {
+        return this.app.get('/', (req, res, next) => {
+
+            const ms = `<div class="jumbotron">
+  <h1 class="display-4">Welcome to RESTful Web API with Node.js Framework</h1>
+  <p class="lead">This API is built on top of ExpressJS</p>
+  <hr class="my-4">
+  <p>For information on how to use this api please visit our GitHub page.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="https://github.com/block8-tech/udacity_blockchain_project3" role="button">Learn more</a>
+  </p>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+`;
+            res.send(ms);
+            res.end();
+        })
     }
 
 
@@ -65,11 +88,11 @@ class BlockController {
                 };
                 res.send(JSON.stringify(errorMessage));
                 res.end();
-            } else {
-                //6.
-                res.send(`ERROR: error with your HTTP GET request: ${_req}`);
+            }
+
+            if(!indx){
+                res.send();
                 res.end();
-                throw new Error(`ERROR: error with your HTTP GET request: ${_req}`);
             }
         });
     }
